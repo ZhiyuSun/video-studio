@@ -19,8 +19,6 @@ films/                    单部短片
     tools/                渲染、报错扫描、歌词对齐
     assets/               歌曲与歌词
 series/                   系列节目
-  ancient-minds/          古人与心理学（系列名待定），中国水墨，每期一个文件夹
-    ep01-longchang/       第 1 期《龙场》：王阳明，一无所有时怎么重新找到方向
   shape-of-poems/         《诗的形状》
     season-1.md           第一季选题
     production-guide.md   视觉语言、单集结构、分工
@@ -34,5 +32,5 @@ docs/
 |---|---|---|
 | 《下一帧》 | 已完成全片（4:53），源代码、配乐、封面已入库，准备发布 B 站 | https://claude.ai/artifact/L9PPq1ZDRD6g6hfLCJ3qJZ |
 | 《宇宙只有一个月亮》MV | 已完成全片（5:58），公开脱敏版源代码、歌曲、封面已入库；已准备 B 站与网易云发布 | — |
-| 古人与心理学 第 1 期《龙场》 | 已完成全片（5:26），源代码、配音缓存、封面、简介已入库；准备发布 B 站。第 2、3 期待从对应会话上传 | — |
+| 古人与心理学 | 已迁到独立仓库 https://github.com/ZhiyuSun/ancient-minds（含第 1–3 期及提交历史） | — |
 | 《诗的形状》第一季 | 选题已定 8 集，未开拍 | https://claude.ai/artifact/1iPn6cgCNG2CTuJ1n7Jicx |
