@@ -13,6 +13,11 @@ films/                    单部短片
     cover/                B 站封面
     render.py             逐镜头渲染
     renders/              渲染输出（已被 .gitignore 忽略）
+  only-one-moon/          《宇宙只有一个月亮》生日歌 MV（公开脱敏版）
+    src/                  画面代码（Canvas 2D 剪纸风格，逐帧绘制）
+    cover/                B 站封面、网易云专辑封面
+    tools/                渲染、报错扫描、歌词对齐
+    assets/               歌曲与歌词
 series/                   系列节目
   shape-of-poems/         《诗的形状》
     season-1.md           第一季选题
@@ -26,4 +31,5 @@ docs/
 | 项目 | 状态 | 线上页面 |
 |---|---|---|
 | 《下一帧》 | 已完成全片（4:53），源代码、配乐、封面已入库，准备发布 B 站 | https://claude.ai/artifact/L9PPq1ZDRD6g6hfLCJ3qJZ |
+| 《宇宙只有一个月亮》MV | 已完成全片（5:58），公开脱敏版源代码、歌曲、封面已入库；已准备 B 站与网易云发布 | — |
 | 《诗的形状》第一季 | 选题已定 8 集，未开拍 | https://claude.ai/artifact/1iPn6cgCNG2CTuJ1n7Jicx |
