@@ -1,3 +1,0 @@
-# For agents
-
-Read README.md first (Chinese): it maps every file, the data flow (lines.json → voices → tools/timeline.py → story.json → src/film.js / music/score.py / mix.py → render → mux) and recipes for common edits. Then read the Lemo-Opuscar library AGENTS.md, TECHNIQUE.md and styles/ink-wash/STYLE.md. story.json is the only source of timing: in film.js tie moments to narration with `vt('L14', k)` / `pr(t, 'L14', k0, k1)`, never hard-code film seconds. All scenes are `SCN.<id>` in src/film.js; scene splits and transitions are in `init()`. Render stills (`node core/render/still.mjs <project> <seconds…>`) and look at them before delivering. Never put API keys in this folder.
