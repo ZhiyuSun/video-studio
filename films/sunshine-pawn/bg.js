@@ -7,7 +7,7 @@ const SIGNS_V = ['拉面', '旅馆', '药房', '茶室', '书店', '电玩', '�
 const SIGNS_H = ['BAR', 'CAFE', 'HOTEL', '24H', 'VIDEO', 'NOODLE', 'ARCADE', 'CLUB', 'REPAIR', 'TAXI', 'MOTEL', 'RADIO'];
 
 // Neon tubes: the tube itself on the color image (white core + coloured edge), coloured light of the same shape on the emissive image
-export function neonText(g, e, txt, x, y, size, col, vertical = false, font = 'HeiSC') {
+export function neonText(g, e, txt, x, y, size, col, vertical = false, font = 'TubeSC', wk = 1) {
   for (const [ctx, pass] of [[g, 0], [e, 1]]) {
     ctx.save(); ctx.font = `${size}px "${font}"`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
     ctx.lineJoin = 'round';
@@ -15,11 +15,11 @@ export function neonText(g, e, txt, x, y, size, col, vertical = false, font = 'H
     chars.forEach((ch, i) => {
       const yy = vertical ? y + (i - (chars.length - 1) / 2) * size * 1.05 : y;
       if (pass === 0) {
-        ctx.strokeStyle = rgba(col, .9); ctx.lineWidth = size * .16; ctx.strokeText(ch, x, yy);
-        ctx.strokeStyle = mix(col, '#ffffff', .75); ctx.lineWidth = size * .05; ctx.strokeText(ch, x, yy);
+        ctx.strokeStyle = rgba(col, .9); ctx.lineWidth = size * .16 * wk; ctx.strokeText(ch, x, yy);
+        ctx.strokeStyle = mix(col, '#ffffff', .75); ctx.lineWidth = size * .05 * wk; ctx.strokeText(ch, x, yy);
       } else {
-        ctx.strokeStyle = col; ctx.lineWidth = size * .2; ctx.strokeText(ch, x, yy);
-        ctx.strokeStyle = mix(col, '#ffffff', .5); ctx.lineWidth = size * .06; ctx.strokeText(ch, x, yy);
+        ctx.strokeStyle = col; ctx.lineWidth = size * .2 * wk; ctx.strokeText(ch, x, yy);
+        ctx.strokeStyle = mix(col, '#ffffff', .5); ctx.lineWidth = size * .06 * wk; ctx.strokeText(ch, x, yy);
       }
     });
     ctx.restore();
@@ -90,7 +90,7 @@ export function streetPlate(LW, Hh, seed = 3, mode = 'night') {
       g.fillStyle = '#150d22'; g.fillRect(vx - 38, vy, 76, vh);
       g.fillStyle = rgba('#000000', .4); g.fillRect(vx + 32, vy, 6, vh);
       if (night || R() < .4) { neonText(g, e, vt, vx, vy + vh / 2, 60, vcol, true); neonRect(g, e, vx - 32, vy + 6, 64, vh - 12, vcol, 6); airbrush(g, vx, vy + vh / 2, 110, vh * .7, vcol, night ? .2 : .08); }
-      else { g.font = '60px "HeiSC"'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillStyle = mix(vcol, '#ffffff', .2); [...vt].forEach((ch, i) => g.fillText(ch, vx, vy + vh / 2 + (i - (vt.length - 1) / 2) * 63)); }
+      else { g.font = '60px "TubeSC"'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillStyle = mix(vcol, '#ffffff', .2); [...vt].forEach((ch, i) => g.fillText(ch, vx, vy + vh / 2 + (i - (vt.length - 1) / 2) * 63)); }
     }
   }
   // pavement

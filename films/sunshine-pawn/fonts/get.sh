@@ -12,3 +12,4 @@ get "family=Noto+Sans+SC:wght@900&text=$CHARS" NotoSansSC-Black-subset.woff2
 get "family=Share+Tech+Mono&text=0123456789%3A%C2%A5%20." ShareTechMono-subset.woff2
 get "family=Kanit:ital,wght@1,900&text=SUNSHINEPAWBRCFHOTLVIDKYGMXZ24" Kanit-BlackItalic-subset.woff2
 get "family=Kanit:ital,wght@1,800&text=SUNSHINEPAWBRCFHOTLVIDKYGMXZ24" Kanit-ExtraBoldItalic-subset.woff2
+get "family=Noto+Sans+SC:wght@300&text=$CHARS" NotoSansSC-Light-subset.woff2

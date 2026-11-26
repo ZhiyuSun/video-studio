@@ -59,7 +59,7 @@ export function drawMemory(M, g, e, t, A, o = {}) {
   }
   // the woman, backlit, waving
   if (!o.noWoman) {
-    const wv = Math.min(1, Math.max(0, (t - T.wave) / .4));
+    const wv = Math.min(1, Math.max(0, (t - (o.waveAt ?? T.wave)) / .4));
     g.save(); g.translate(1230, 900); g.scale(1.05, 1.05);
     woman(g, null, { t, wave: wv > 0 ? 1 : 0, rim: { c: '#ffe0a0', d: [-5, 4] } });
     g.restore();

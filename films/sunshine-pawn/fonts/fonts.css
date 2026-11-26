@@ -2,3 +2,4 @@
 @font-face { font-family: 'HUD'; src: url(ShareTechMono-subset.woff2) format('woff2'); font-display: block; }
 @font-face { font-family: 'Kanit'; font-style: italic; font-weight: 900; src: url(Kanit-BlackItalic-subset.woff2) format('woff2'); font-display: block; }
 @font-face { font-family: 'Kanit'; font-style: italic; font-weight: 800; src: url(Kanit-ExtraBoldItalic-subset.woff2) format('woff2'); font-display: block; }
+@font-face { font-family: 'TubeSC'; src: url(NotoSansSC-Light-subset.woff2) format('woff2'); font-display: block; }

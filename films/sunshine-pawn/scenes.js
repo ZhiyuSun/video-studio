@@ -152,7 +152,7 @@ export function wrist(S) {
 // ═════════ 2 · crane down the tower canyon to the pawnshop sign ═════════
 export function crane(S) {
   const { g, e, A, t, u } = S;
-  const k = ease(clamp(u * 1.06));
+  const k = ease(clamp(u / .55));
   const F = A.tallFar, N = A.tallNear;
   const yF = -k * (F.h - H), yN = -k * (N.h - H);
   g.drawImage(F.c, 0, yF); e.drawImage(F.e, 0, yF);
@@ -166,7 +166,7 @@ export function crane(S) {
   g.drawImage(N.c, 0, yN); e.drawImage(N.e, 0, yN);
   // the pawnshop: door + sign (plate coordinates on the near layer)
   const base = N.base + yN;
-  const sx = 470, sy = N.base - 760 + yN;
+  const sx = 470, sy = N.base - 700 + yN;
   // door: green-lit doorway under the sign
   g.fillStyle = '#0a1612'; g.fillRect(sx - 90, base - 230, 180, 230);
   vgrad(g, sx - 70, base - 210, 140, 210, [[0, '#2a7a5a'], [1, '#5affb0']]);
@@ -174,12 +174,13 @@ export function crane(S) {
   airbrush(g, sx, base, 260, 60, '#3dff9a', .18);
   // sign strikes on the bar
   const on = signOn(t);
-  g.fillStyle = '#0c1a16'; g.fillRect(sx - 72, sy, 144, 4 * 118 + 60);
+  g.fillStyle = '#0a1412'; g.fillRect(sx - 84, sy - 10, 168, 4 * 118 + 80); e.fillStyle = '#000'; e.fillRect(sx - 92, sy - 18, 184, 4 * 118 + 96);
+  g.fillStyle = rgba('#000000', .5); g.fillRect(sx + 84, sy - 10, 10, 4 * 118 + 80);
   if (on > 0) {
-    g.save(); g.globalAlpha = on; neonText(g, e, '记忆典当', sx, sy + (4 * 118 + 60) / 2, 104, '#3dff9a', true); neonRect(g, e, sx - 62, sy + 8, 124, 4 * 118 + 44, '#3dff9a', 8); g.restore();
+    g.save(); g.globalAlpha = on; neonText(g, e, '记忆典当', sx, sy + (4 * 118 + 60) / 2, 104, '#3dff9a', true, 'TubeSC', .5); neonRect(g, e, sx - 62, sy + 8, 124, 4 * 118 + 44, '#3dff9a', 8); g.restore();
     airbrush(g, sx, sy + 270, 260, 320, '#3dff9a', .16 * on);
   } else {   // unlit tube: pale glass
-    g.save(); g.font = '104px HeiSC'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.strokeStyle = rgba('#a0c0b8', .35); g.lineWidth = 4;
+    g.save(); g.font = '104px TubeSC'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.strokeStyle = rgba('#a0c0b8', .35); g.lineWidth = 4;
     [...'记忆典当'].forEach((ch, i) => g.strokeText(ch, sx, sy + (4 * 118 + 60) / 2 + (i - 1.5) * 109)); g.restore();
   }
   // the hero, small, walking towards the door
@@ -191,7 +192,7 @@ export function crane(S) {
   rain(g, e, fr, { n: 200, ang: .06, len: [70, 150], a: .26, w: 1.4, seed: 5 });
   if (u > .7) splashes(g, fr % 3, base + 10, H, 18, '#bfb0ff');
   const vis = sy > -10 && sy + 532 < H;
-  return { texts: on > .5 && vis ? [{ id: 'sign', text: '记忆典当', x0: sx - 70, y0: sy, x1: sx + 70, y1: sy + 532 }] : [] };
+  return { texts: t >= T.signOn + .58 && vis ? [{ id: 'sign', text: '记忆典当', x0: sx - 70, y0: sy, x1: sx + 70, y1: sy + 532 }] : [] };
 }
 function signOn(t) {
   if (t < T.signOn) return 0;
@@ -268,8 +269,8 @@ export function counter(S) {
   shopBack(S);
   // the keeper, backlit by the lamp, monocle lights up
   const lens = seg(t, T.lens, T.lens + .25), lean = ease(seg(t, T.lens, T.lens + 1.2)) * 20;
-  celLayer(S, c => { c.translate(430 + lean, 600); keeper(c, null, P, { lens, hands: [[620 - lean, 180], [520 - lean, 200]], fingers: q8(t) * .3, rim: { c: '#9affe0', d: [-6, -6] } }); });
-  if (lens > 0) { const mx = 430 + lean + 92, my = 600 - 152; const gr = e.createRadialGradient(mx, my, 0, mx, my, 100); gr.addColorStop(0, rgba('#7dffb0', .9 * lens)); gr.addColorStop(1, rgba('#3dff90', 0)); e.fillStyle = gr; e.beginPath(); e.arc(mx, my, 100, 0, TAU); e.fill(); }
+  celLayer(S, c => { c.translate(420 + lean, 640); c.scale(1.3, 1.3); keeper(c, null, P, { lens, hands: [[440 - lean, 110], [360 - lean, 125]], fingers: q8(t) * .3, rim: { c: '#9affe0', d: [-6, -6] } }); });
+  if (lens > 0) { const mx = 420 + lean + 92 * 1.3, my = 640 - 152 * 1.3; const gr = e.createRadialGradient(mx, my, 0, mx, my, 100); gr.addColorStop(0, rgba('#7dffb0', .9 * lens)); gr.addColorStop(1, rgba('#3dff90', 0)); e.fillStyle = gr; e.beginPath(); e.arc(mx, my, 100, 0, TAU); e.fill(); }
   counterFG(g, e, P);
   // CRT on the counter
   const pw = seg(t, T.crtOn, T.crtOn + .5);
@@ -458,9 +459,9 @@ export function towerPlate() {
 }
 export function billboard(S) {
   const { g, e, A, t, lt } = S;
-  const Tw = A.tower, tilt = ease(seg(lt, .3, 3.6));
-  const yoff = lerp(-(Tw.h - H), -230, tilt) - seg(lt, 3.6, 6.5) * 30;
-  const zz = 1 + seg(lt, 3.6, 6.5) * .04;
+  const Tw = A.tower, tilt = ease(seg(lt, .2, 2.4));
+  const yoff = lerp(-(Tw.h - H), -230, tilt) - seg(lt, 2.4, 5.3) * 30;
+  const zz = 1 + seg(lt, 2.4, 5.3) * .04;
   const pw = seg(t, T.power, T.power + .6), lit = seg(t, T.power + .35, T.power + 1.2);
   g.save(); e.save();
   for (const c of [g, e]) { c.translate(960, 540); c.scale(zz, zz); c.translate(-960, -540); c.translate(0, yoff); }
@@ -468,12 +469,13 @@ export function billboard(S) {
   // noon light spilling down the tower face
   if (lit > 0) { airbrush(g, 960, 1200, 1100, 900, '#ffe6a8', .32 * lit); airbrush(g, 960, 700, 900, 600, '#fff4d0', .2 * lit); }
   const SS = { ...S, g, e };
-  memInto(SS, 260, 270, 1400, 860, { power: pw, glow: .9 });
+  memInto(SS, 260, 270, 1400, 860, { power: pw, glow: .9, waveAt: T.wave2 });
   const adOn = t >= T.adText;
   if (adOn) {
-    glowText(g, e, '真实阳光 · 二手回忆', 960, 1230, '900 84px HeiSC', '#fff2c8', { align: 'center' });
-    g.fillStyle = '#ff3a4a'; g.fillRect(1250, 990, 380, 110); e.fillStyle = rgba('#ff3a4a', .5); e.fillRect(1250, 990, 380, 110);
-    glowText(g, e, '每分钟 ¥9.9', 1440, 1046, '900 64px HeiSC', '#ffffff', { align: 'center', ga: .5 });
+    glowText(g, e, '真实阳光　二手回忆', 960, 1230, '900 84px HeiSC', '#ff9a3a', { align: 'center', ga: .22 });
+    g.fillStyle = '#e8283a'; g.fillRect(1250, 990, 380, 110); e.fillStyle = rgba('#ff3a4a', .22); e.fillRect(1250, 990, 380, 110);
+    g.save(); g.font = '900 64px HeiSC'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillStyle = '#fff4e0'; g.fillText('每分钟 ¥9.9', 1440, 1046); g.restore();
+    e.save(); e.globalCompositeOperation = 'multiply'; e.fillStyle = '#404040'; e.fillRect(1250, 990, 380, 110); e.restore();
   }
   // crowd at the foot of the tower, looking up (silhouettes lit from above once the screen is on)
   const P = lit > .5 ? PAL.sun : PAL.night;
@@ -492,7 +494,7 @@ export function billboard(S) {
   const Y = v => (v + yoff) * zz + 540 * (1 - zz);
   const texts = [];
   if (adOn) {
-    texts.push({ id: 'ad1', text: '真实阳光 · 二手回忆', x0: 560, y0: Y(1180), x1: 1360, y1: Y(1280) });
+    texts.push({ id: 'ad1', text: '真实阳光　二手回忆', x0: 560, y0: Y(1180), x1: 1360, y1: Y(1280) });
     texts.push({ id: 'ad2', text: '每分钟 ¥9.9', x0: 1250, y0: Y(990), x1: 1630, y1: Y(1100) });
   }
   return { texts, bloom: .85 + .3 * lit };
@@ -503,9 +505,9 @@ export function eye(S) {
   const { g, e, t, A, lt, u } = S;
   const z = 1 + .06 * u;
   // one slow blink in three drawings
-  const bt = q8(t) - (T.hood - .9);
+  const bt = q8(t) - T.blink;
   const open = bt < 0 ? 1 : bt < .125 ? .45 : bt < .25 ? 0 : bt < .375 ? .5 : 1;
-  const [mc] = memFrame(t, A, {});
+  const [mc] = memFrame(t, A, { waveAt: T.wave2 });
   g.save(); g.translate(960, 540); g.scale(z, z); g.translate(-960, -540);
   eyeECU(g, e, { P: PAL.sun, open, look: [.1, -.35], dil: .82, visorA: .18,
     reflect: (c, IR, ix, iy, iw, ih) => {
@@ -518,34 +520,78 @@ export function eye(S) {
   return {};
 }
 
-// ═════════ 10 · the crowd, he lowers his hood and leaves ═════════
-export function crowd(S) {
-  const { g, e, t, A, lt } = S;
-  const { P } = streetScene(S, { mode: 'sun', z: 1.0, ox: -2100 - lt * 6 });
-  // billboard light pouring from above-left + the bottom edge of the screen
-  airbrush(g, 700, -100, 1300, 700, '#ffe6a8', .3);
-  const [mc, me] = memFrame(t, A, {});
-  g.save(); g.beginPath(); g.rect(200, -40, 1300, 200); g.clip(); g.drawImage(mc, 200, -560, 1300, 732); g.restore();
-  e.save(); e.globalAlpha = .9; e.beginPath(); e.rect(200, -40, 1300, 200); e.clip(); e.drawImage(me, 200, -560, 1300, 732); e.restore();
-  g.fillStyle = '#0a0812'; g.fillRect(180, 160, 1340, 16);
-  g.fillStyle = '#ff3a4a'; g.fillRect(1120, 40, 360, 104); e.fillStyle = rgba('#ff3a4a', .5); e.fillRect(1120, 40, 360, 104);
-  glowText(g, e, '每分钟 ¥9.9', 1300, 92, '900 60px HeiSC', '#ffffff', { align: 'center', ga: .5 });
-  const fr = f12(t), R = rng(31);
-  const back = [], front = [];
-  for (let i = 0; i < 14; i++) { const x = 40 + i * 140 + R() * 60, depth = R(); (depth < .5 ? back : front).push([x, depth, i]); }
-  const drawP = ([x, d, i]) => { const s = .62 + d * .35, y = 900 + d * 140;
-    celLayer(S, c => { c.translate(x, y); c.scale(s, s); umbrellaPerson(c, P, { umb: [P.umb, P.umb2, P.umb3][i % 3], up: 1, tilt: (hash(i) - .5) * .3, rim: { c: '#fff0b0', d: [-3, 6] } }); }, { occA: .7 }); };
-  back.forEach(drawP);
-  // the hero: lowers the hood, turns away and walks out of frame right
-  const hood = ease(seg(q12(t), T.hood, T.hood + .5)), hold = seg(q12(t), T.hood + .5, T.hood + .8);
-  const armUp = hood * (1 - hold);
-  const lookUp = 1 - hood;
-  const wk = seg(t, T.leave, T.leave + .3), hx = 980 + Math.max(0, t - T.leave) * 360;
-  celLayer(S, c => { c.translate(hx, 1010); c.scale(.82, .82); heroBack(c, P, { ph: (fr % 8) / 8, walk: wk, lookUp, armUp, rim: { c: '#fff0b0', d: [-3, 6] } }); });
-  front.forEach(drawP);
-  rain(g, e, fr, { n: 200, ang: .1, len: [50, 120], a: .3, w: 1.5, seed: 13, col: '#ffe8c0' });
-  splashes(g, fr % 3, 860, H, 26, '#ffe8c0');
-  return { texts: [{ id: 'ad3', text: '每分钟 ¥9.9', x0: 1120, y0: 40, x1: 1480, y1: 144 }] };
+// ═════════ 10 · the hand: she waves on the screen, his hand answers before he knows why ═════════
+export function hand(S) {
+  const { g, e, t, A, lt } = S, P = PAL.sun;
+  const { } = streetScene(S, { mode: 'sun', z: 1.15, ox: -2600 - lt * 4 });
+  // the billboard, upper left, she waves
+  const mt = t - T.wave2 + T.wave;
+  memInto(S, -260, -330, 1380, 776, { mt, waveAt: T.wave, glow: .9 });
+  g.fillStyle = '#0a0812'; g.fillRect(-260, 446, 1380, 18);
+  airbrush(g, 500, 300, 1200, 700, '#ffe6a8', .22);
+  const fr = f12(t), R = rng(44);
+  for (let i = 0; i < 6; i++) { const x = 60 + i * 330 + R() * 80, s = .8 + R() * .2;
+    if (Math.abs(x - 1150) < 260) continue;
+    celLayer(S, c => { c.translate(x, 1000 + R() * 60); c.scale(s, s); umbrellaPerson(c, P, { umb: [P.umb, P.umb2, P.umb3][i % 3], up: 1, tilt: (R() - .5) * .3, rim: { c: '#fff0b0', d: [-3, 6] } }); }, { occA: .7 }); }
+  // the hand: anticipation (a small dip), rise, hold; he notices, looks at it, lowers it
+  const qt = q12(t);
+  const up = ease(seg(qt, T.handUp + .17, T.handUp + 1.1));   // the beat before it (handUp → +.17) is held still: the hesitation
+  const down = ease(seg(qt, T.handDown, T.handDown + .7));
+  const wave = Math.max(0, up) * (1 - down) + Math.min(0, up);
+  const lookDown = ease(seg(qt, T.notice, T.notice + .35)) * (1 - .5 * down);
+  celLayer(S, c => { c.translate(1150, 1680); c.scale(1.9, 1.9); heroBack(c, P, { walk: 0, lookUp: 1 - lookDown, lookDown, wave, rim: { c: '#fff0b0', d: [-4, 6] } }); });
+  rain(g, e, fr, { n: 180, ang: .1, len: [50, 120], a: .28, w: 1.5, seed: 21, col: '#ffe8c0' });
+  return {};
+}
+
+// ═════════ 11 · the faces: the screen's point of view, looking down at all of us ═════════
+export function faces(S) {
+  const { g, e, t, lt, u } = S;
+  vgrad(g, 0, 0, W, H, [[0, '#1a1024'], [1, '#2a1a24']]);
+  // wet ground reflecting the screen: a big warm smear
+  airbrush(g, 960, 540, 1400, 900, '#ffcf8a', .14);
+  const z = lerp(1.9, .92, eo(clamp(u * 1.05)));
+  const hx = 980, hy = 560;
+  g.save(); e.save();
+  for (const c of [g, e]) { c.translate(960, 540); c.scale(z, z); c.translate(-hx, -hy); }
+  const R = rng(7), fr = f12(t);
+  const people = [];
+  for (let row = -6; row <= 7; row++) for (let col = -9; col <= 9; col++) {
+    const x = hx + col * 150 + (row % 2) * 75 + (R() - .5) * 60, y = hy + row * 120 + (R() - .5) * 40;
+    if (row === 0 && col === 0) { people.push({ x: hx, y: hy, hero: true }); continue; }
+    people.push({ x, y, r: R(), phone: R() < .12, umb: R() < .7, uc: Math.floor(R() * 3), tilt: (R() - .5) * .6 });
+  }
+  const UC = ['#3a4466', '#5a3a5a', '#2f5050'];
+  for (const p of people) {
+    const { x, y } = p;
+    if (p.hero) continue;
+    // umbrella, tipped back behind the head (seen from above and in front)
+    if (p.umb) { g.save(); g.translate(x, y - 46); g.rotate(p.tilt); cel(g, (() => { const q = new Path2D(); q.ellipse(0, 0, 88, 50, 0, 0, TAU); return q; })(), { f: UC[p.uc], s: mix(UC[p.uc], '#000', .4), so: [0, 12], l: '#0a0a14', lw: 2, rim: { c: '#ffd8a0', d: [0, 5] } }); g.restore(); }
+    // shoulders
+    cel(g, path([[x - 52, y + 40], [x - 40, y + 12], [x + 40, y + 12], [x + 52, y + 40], [x + 40, y + 60], [x - 40, y + 60]]), { f: '#2a2a40', s: '#1a1a2a', so: [0, 8], l: '#08080e', lw: 2 });
+    // an upturned face, lit by the screen
+    const fp = new Path2D(); fp.ellipse(x, y, 26, 32, 0, 0, TAU);
+    cel(g, fp, { f: '#ffd6a8', s: '#c08a88', so: [0, 10], h: '#fff2d8', ho: [0, -3], l: '#5a2e2e', lw: 1.6 });
+    g.fillStyle = '#3a2028'; g.fillRect(x - 12, y - 6, 7, 3); g.fillRect(x + 5, y - 6, 7, 3);   // eyes, all looking up at us
+    airbrush(e, x, y, 40, 46, '#ffcf8a', .22);
+    if (p.phone) {   // some of them are filming it
+      g.fillStyle = '#101018'; g.fillRect(x + 22, y - 30, 26, 44); g.fillStyle = '#fff2c8'; g.fillRect(x + 25, y - 27, 20, 36);
+      e.fillStyle = rgba('#fff2c8', .8); e.fillRect(x + 25, y - 27, 20, 36);
+    }
+  }
+  // the hero: yellow hood, visor up towards us, the only one not glowing back
+  const P = PAL.sun;
+  cel(g, path([[hx - 56, hy + 44], [hx - 44, hy + 12], [hx + 44, hy + 12], [hx + 56, hy + 44], [hx + 44, hy + 64], [hx - 44, hy + 64]]), { f: P.coat.f, s: P.coat.s, so: [0, 8], l: P.coat.l, lw: 2 });
+  const hood = new Path2D(); hood.ellipse(hx, hy - 4, 40, 46, 0, 0, TAU);
+  cel(g, hood, { f: P.coat.f, s: P.coat.s, so: [0, 10], h: P.coat.h, ho: [0, -4], l: P.coat.l, lw: 2 });
+  const fc = new Path2D(); fc.ellipse(hx, hy + 2, 24, 30, 0, 0, TAU);
+  cel(g, fc, { f: P.skin.f, s: P.skin.s, so: [0, 10], l: P.skin.l, lw: 1.6 });
+  cel(g, path([[hx - 26, hy - 10], [hx + 26, hy - 10], [hx + 24, hy + 2], [hx - 24, hy + 2]].map(p => [...p, 1])), { f: P.visor.f, h: P.visor.h, hi: [[[hx - 20, hy - 8], [hx - 4, hy - 8], [hx - 8, hy - 4], [hx - 20, hy - 4]]], l: P.visor.l, lw: 1.6 });
+  g.restore(); e.restore();
+  // rain falling towards the lens
+  const R2 = rng(300 + fr % 3);
+  for (let i = 0; i < 160; i++) { const x = R2() * W, y = R2() * H, l = 6 + R2() * 18; g.strokeStyle = rgba('#ffe8c0', .25 + R2() * .3); g.lineWidth = 1.5; g.beginPath(); g.moveTo(x, y); g.lineTo(x + (x - 960) * .02 * l / 10, y + (y - 540) * .02 * l / 10); g.stroke(); }
+  return { bloom: 1.0 };
 }
 
 // ═════════ 11 · title ═════════
@@ -564,7 +610,7 @@ export function title(S) {
     const cx = 960, cy = 430;
     for (const [c, pass] of [[g, 0], [e, 1]]) {
       c.save(); c.font = '230px HeiSC'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.lineJoin = 'round';
-      if (pass) { c.strokeStyle = '#ff3fa4'; c.lineWidth = 26; c.strokeText('典当', cx, cy); c.fillStyle = rgba('#ffb0e0', .5); c.fillText('典当', cx, cy); }
+      if (pass) { c.strokeStyle = rgba('#ff3fa4', .7); c.lineWidth = 12; c.strokeText('典当', cx, cy); }
       else {
         c.strokeStyle = '#ff3fa4'; c.lineWidth = 22; c.strokeText('典当', cx, cy);
         c.strokeStyle = '#1a0828'; c.lineWidth = 12; c.strokeText('典当', cx, cy);
@@ -573,7 +619,7 @@ export function title(S) {
         c.fillStyle = gr; c.fillText('典当', cx, cy);
       }
       c.font = 'italic 900 92px Kanit';
-      if (pass) { c.strokeStyle = '#35e7ff'; c.lineWidth = 14; c.strokeText('SUNSHINE PAWN', cx, cy + 210); }
+      if (pass) { c.strokeStyle = rgba('#35e7ff', .7); c.lineWidth = 8; c.strokeText('SUNSHINE PAWN', cx, cy + 210); }
       else {
         c.strokeStyle = '#35e7ff'; c.lineWidth = 12; c.strokeText('SUNSHINE PAWN', cx, cy + 210);
         c.strokeStyle = '#1a0828'; c.lineWidth = 7; c.strokeText('SUNSHINE PAWN', cx, cy + 210);

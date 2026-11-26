@@ -11,7 +11,7 @@ const [sc, g] = canvas(W, H), [gc, e] = canvas(W, H);
 const post = makePost(document.getElementById('gl'));
 
 const CJK = '余额断电倒计时记忆典当估价已到账真实阳光二手回忆每分钟拉面旅馆药房茶室书店电玩修理夜市饺子照相义体网吧';
-await document.fonts.load('104px HeiSC', CJK);
+await document.fonts.load('104px HeiSC', CJK); await document.fonts.load('104px TubeSC', CJK);
 await document.fonts.load('64px HUD', '0123456789:¥ .');
 await document.fonts.load('italic 900 56px Kanit', 'SUNSHINE PAWN'); await document.fonts.load('italic 800 56px Kanit', 'BARCAFE');
 
@@ -25,7 +25,7 @@ const A = {};
   A.mem = memoryPlate(); A.shop = SC.shopPlate(); A.tower = SC.towerPlate(); A.bokeh = SC.bokehPlate();
 }
 const FN = { wrist: SC.wrist, crane: SC.crane, counter: SC.counter, memory: SC.memory, price: SC.price, extract: SC.extract,
-  street: SC.street, billboard: SC.billboard, eye: SC.eye, crowd: SC.crowd, title: SC.title };
+  street: SC.street, billboard: SC.billboard, eye: SC.eye, hand: SC.hand, faces: SC.faces, title: SC.title };
 
 let lastTexts = [];
 function render(t) {
@@ -55,9 +55,10 @@ function events() {
   add('door', T.door - .05, { bell: 1 });
   for (let k = 0; k < 9; k++) add('step', T.door + .35 + k * (8 / 12 / 2) * 2, { v: .7 });
   add('brownout', T.hush2, { d: .4 });
-  add('powerup', T.power); add('waves', T.power + .4, { d: bar(21.5) - T.power, lofi: 0, v: 1.2 });
-  add('crowd', T.power + .8, { d: bar(21.5) - T.power });
-  add('cloth', T.hood); for (let k = 0; k < 5; k++) add('step', T.leave + .2 + k * .667, { v: .5 });
+  add('powerup', T.power); add('waves', T.power + .4, { d: T.title - T.power - .4, lofi: 0, v: 1.2 });
+  add('crowd', T.power + .8, { d: T.faces - T.power });
+  add('cloth', T.handUp); add('cloth', T.handDown, { v: .6 });
+  add('rainup', T.faces, { d: T.title - T.faces });
   add('neon', T.title, { d: .75 }); add('glint', T.glint);
   add('crtoff', DUR - .55);
   return ev.sort((a, b) => a.t - b.t);

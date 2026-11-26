@@ -1,0 +1,21 @@
+《典当》SUNSHINE PAWN — credits for third-party material
+
+Picture and sound are made entirely in code; no stock footage, samples, voices or generated images.
+
+Style
+- Visual style: "80s Cel Anime" from the Lemo-Opuscar style library (https://github.com/lemomo-ai/lemo-opuscar).
+  The drawing helpers cel.js, fx.js, post.js and parts of bg.js, and the synth instrument kernels in music/score.py,
+  are adapted from that style's demo engine, under the MIT License (LICENSE-MIT-lemo-opuscar.txt).
+
+Fonts (all SIL Open Font License 1.1, fetched as subsets from Google Fonts; see fonts/get.sh)
+- Noto Sans SC (Black, Light) — Copyright 2014-2021 Adobe (http://www.adobe.com/), with Reserved Font Name 'Source'. OFL 1.1. https://fonts.google.com/noto/specimen/Noto+Sans+SC
+- Kanit (Black Italic, ExtraBold Italic) — Copyright 2020 The Kanit Project Authors. OFL 1.1 (fonts/OFL-Kanit.txt). https://fonts.google.com/specimen/Kanit
+- Share Tech Mono — Copyright 2012 Carrois Type Design. OFL 1.1. https://fonts.google.com/specimen/Share+Tech+Mono
+  Full licence text: https://openfontlicense.org/open-font-license-official-text/
+
+Music and sound
+- Original score, synthesised with numpy/numba (music/score.py). No samples.
+- All foley and ambience synthesised procedurally (mix.py, with the library's core/audio/sfx.py).
+
+Signs and names
+- All shop signs, the pawnshop and the advertisement are fictional and generic. No real brands appear.

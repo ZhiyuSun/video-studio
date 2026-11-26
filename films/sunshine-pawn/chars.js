@@ -48,19 +48,17 @@ export function heroProfile(g, P, o = {}) {
   // hood back (behind the face)
   const hood = [[-70, -70], [-30, -112], [40, -108], [96, -60], [110, 10], [98, 74], [62, 118, 1], [-20, 120], [-40, 60], [-54, 0]];
   cel(g, hood, { f: P.coat.f, s: P.coat.s, so: [-20, 12], h: P.coat.h, ho: [10, 14], l: P.coat.l, lw, rim: o.rim });
-  // face (profile): forehead under the brim → visor → nose → lips → chin → jaw
-  const face = [[-66, -44], [-80, -20], [-84, 4], [-98, 24, 1], [-86, 34, 1], [-84, 42], [-90, 48, 1], [-82, 54], [-84, 60, 1], [-76, 76], [-56, 92], [-20, 100], [0, 80], [10, 20], [0, -40]];
-  cel(g, face, { f: P.skin.f, s: P.skin.s, so: [22, 0], sh: [[[-30, 60], [-6, 40], [0, 100], [-40, 100]]], h: P.skin.h, ho: [-6, -4], l: P.skin.l, lw: 1.8 });
-  // hood lining + rim around the face opening
-  cel(g, [[-70, -70], [-30, -96], [10, -92], [20, -20], [14, 60], [-10, 106], [-24, 112], [-4, 60], [-6, -30], [-40, -62]], { f: P.lining.f, s: P.lining.s, l: P.lining.l, lw: 1.6 });
-  const brim = [[-82, -64], [-40, -104], [20, -104], [10, -86], [-36, -86], [-70, -54]];
-  cel(g, brim, { f: P.coat.f, s: P.coat.s, so: [0, -8], h: P.coat.h, l: P.coat.l, lw });
-  // visor: wraps from the temple to just past the nose
-  const visor = [[-104, -28], [-70, -38], [-2, -36], [16, -20], [-2, 4], [-70, 6], [-102, 0]];
-  cel(g, visor, { f: P.visor.f, s: P.visor.s, so: [0, 10], h: P.visor.h, hi: [[[-96, -26], [-50, -32], [-54, -26], [-94, -20]]], l: P.visor.l, lw: 2.2 });
+  // face (profile): under the visor → nose → lips → chin → jaw; the hood opening frames it from behind
+  const face = [[-70, -50], [-84, -20], [-88, 4], [-99, 22, 1], [-88, 32, 1], [-87, 40], [-82, 46, 1], [-86, 52], [-80, 62, 1], [-80, 76], [-64, 90], [-40, 96], [-28, 40], [-34, -40]];
+  cel(g, face, { f: P.skin.f, s: P.skin.s, so: [16, 0], sh: [[[-104, 6], [-26, 6], [-26, 20], [-92, 18]]], h: P.skin.h, ho: [-5, -4], l: P.skin.l, lw: 1.8 });
+  // hood lining: a narrow dark band behind the cheek
+  cel(g, [[-46, -84], [-24, -86], [-12, 0], [-16, 70], [-30, 108], [-48, 102], [-32, 40], [-30, -30]], { f: P.lining.f, s: P.lining.s, l: P.lining.l, lw: 1.6 });
+  const brim = [[-88, -62], [-50, -102], [0, -106], [-4, -92], [-48, -88], [-78, -56]];
+  cel(g, brim, { f: P.coat.f, s: P.coat.s, so: [0, -6], h: P.coat.h, l: P.coat.l, lw });
+  // visor: wraps from just past the nose back under the hood
+  const visor = [[-106, -30], [-72, -40], [-24, -38], [-20, -22], [-26, 4], [-72, 6], [-104, 0]];
+  cel(g, visor, { f: P.visor.f, s: P.visor.s, so: [0, 10], h: P.visor.h, hi: [[[-98, -28], [-56, -34], [-60, -28], [-96, -22]]], l: P.visor.l, lw: 2.2 });
   if (o.visorGlow) o.visorGlow(g, visor);
-  // ear-strap of the visor
-  cel(g, [[-4, -24], [30, -20], [30, -6], [-4, -8]], { f: P.metal.f, s: P.metal.s, so: [0, 4], l: P.metal.l, lw: 1.4 });
   // neck port (on the back of the neck)
   cel(g, [[64, 54], [86, 54], [88, 78], [62, 78]], { f: P.metal.f, s: P.metal.s, so: [4, 4], h: P.metal.h, l: P.metal.l, lw: 1.4 });
   g.restore();
@@ -97,16 +95,17 @@ export function heroBack(g, P, o = {}) {
   for (const s of [-1, 1]) {
     const a = Math.sin(ph + (s > 0 ? Math.PI : 0)) * .18 * w + (o.armUp && s > 0 ? -o.armUp * 2.4 : 0);
     const S = [s * 92, -410], Hd = [S[0] + Math.sin(a) * 30 * s + s * 10, S[1] + Math.cos(a) * 230];
-    const Hd2 = o.armUp && s > 0 ? [lerp(Hd[0], 40, o.armUp), lerp(Hd[1], -520, o.armUp)] : Hd;
+    let Hd2 = o.armUp && s > 0 ? [lerp(Hd[0], 40, o.armUp), lerp(Hd[1], -520, o.armUp)] : Hd;
+    if (o.wave && s > 0) Hd2 = [lerp(Hd[0], 230, o.wave), lerp(Hd[1], -640, o.wave)];
     cel(g, limb(S, Hd2, 30, 22), { f: P.coat.f, s: P.coat.s, so: [s * 10, 0], h: P.coat.h, l: P.coat.l, lw, rim: o.rim });
     const hp = new Path2D(); hp.ellipse(Hd2[0], Hd2[1] + 8, 20, 22, 0, 0, TAU);
     cel(g, hp, { f: P.lining.f, s: P.lining.s, so: [s * 5, 0], l: P.lining.l, lw: 1.6 });
   }
   // hood from behind (slight point at the top), tilts back when looking up
-  g.save(); g.translate(0, -440); g.rotate(0); const lu = o.lookUp || 0; g.scale(1, 1 - lu * .12); g.translate(0, -lu * 10);
+  g.save(); g.translate(0, -440); g.rotate(0); const lu = o.lookUp || 0, ld = o.lookDown || 0; g.rotate(ld * .12); g.scale(1, 1 - lu * .12 - ld * .06); g.translate(ld * 8, -lu * 10 + ld * 14);
   const hood = [[-78, -10], [-84, -70], [-56, -128], [0, -150, 1], [56, -128], [84, -70], [78, -10], [30, 6], [-30, 6]];
-  cel(g, hood, { f: P.coat.f, s: P.coat.s, so: [14, 4], h: P.coat.h, ho: [-8, 10], l: P.coat.l, lw, rim: o.rim,
-    sh: [[[-4, -146], [4, -146], [8, 4], [-8, 4]]] });
+  cel(g, hood, { f: P.coat.f, s: P.coat.s, so: [14, 4], h: P.coat.h, ho: [-8, 10], l: P.coat.l, lw, rim: o.rim });
+  line(g, [[0, -146], [2, -80], [0, -10]], P.coat.s, 2.5);
   g.restore();
   g.restore();
 }
@@ -217,7 +216,7 @@ export function woman(g, P, o = {}) {
   const head = new Path2D(); head.ellipse(0, -362, 34, 40, 0, 0, TAU); cel(g, head, fill);
   // hair: locks streaming left
   for (let k = 0; k < 5; k++) {
-    const sp = flutter(12, -380 + k * 10, Math.PI + .25 + k * .06, 150 + k * 20, 9, 12 + k * 2, 1.4, fr * 9 + k, 10);
+    const sp = flutter(12, -380 + k * 10, Math.PI - .22 - k * .05, 150 + k * 20, 9, 12 + k * 2, 1.4, fr * 9 + k, 10);
     cel(g, ribbon(sp, u => (1 - u) * 34 + 2), fill);
   }
 }

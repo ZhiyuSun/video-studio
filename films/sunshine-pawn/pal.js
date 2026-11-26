@@ -42,7 +42,7 @@ export function palette(name) {
 export const PAL = Object.fromEntries(Object.keys(LIGHTS).map(k => [k, palette(k)]));
 // skin by hand for each light (multiplying makes faces pink under neon)
 Object.assign(PAL.night.skin, { f: '#e6c8c4', s: '#9a82b2', h: '#fff2f2' });
-Object.assign(PAL.shop.skin, { f: '#cfd8cc', s: '#7f8fa0', h: '#f2fff4', l: '#2e3a3a' });
+Object.assign(PAL.shop.skin, { f: '#ebcfc0', s: '#a3889a', h: '#fff0e8', l: '#4a2e34' });
 Object.assign(PAL.sun.skin, { f: '#ffd2a8', s: '#c08890', h: '#fff4d8' });
 // the yellow coat must pop in every set
 Object.assign(PAL.night.coat, { f: '#f0bc3a', s: '#a86a30', h: '#ffe9a0' });

@@ -20,15 +20,16 @@ export const SHOTS = [
   [bar(9.5), bar(11), 'price'],
   [bar(11), bar(13), 'extract'],
   [bar(13), bar(16), 'street'],
-  [bar(16), bar(18.5), 'billboard'],
-  [bar(18.5), bar(19.75), 'eye'],
-  [bar(19.75), bar(21.5), 'crowd'],
-  [bar(21.5), DUR, 'title'],
+  [bar(16), bar(18), 'billboard'],
+  [bar(18), bar(19), 'eye'],
+  [bar(19), bar(20.5), 'hand'],
+  [bar(20.5), bar(22), 'faces'],
+  [bar(22), DUR, 'title'],
 ];
 export function shotAt(t) { for (const s of SHOTS) if (t < s[1]) return s; return SHOTS[SHOTS.length - 1]; }
 
 export const T = {
-  signOn: bar(4),                 // 10.43 pawnshop sign strikes
+  signOn: bar(3.5),               // 9.13 pawnshop sign strikes
   plug: bar(5) + BEAT * 2,        // 14.35 cable clicks into the neck port
   crtOn: bar(6),                  // 15.65 the small CRT powers on
   lens: bar(6) + BEAT * 2,        // 16.96 keeper's monocle lights up
@@ -45,9 +46,13 @@ export const T = {
   stop: bar(15),                  // 39.13 he stops
   hush2: bar(15.5),               // 40.43 near-silence
   power: bar(16),                 // 41.74 billboard powers on
-  adText: bar(17),                // 44.35 ad copy appears
-  hood: bar(19.75) + BEAT,        // 52.17 pulls the hood down
-  leave: bar(20.25),              // 52.83 walks off
-  title: bar(21.5),               // 56.09 title
-  glint: bar(22),                 // 57.39 star glint
+  adText: bar(16.5),              // 43.04 ad copy appears
+  blink: bar(18) + 1.5,           // 48.46 one slow blink
+  wave2: bar(19) + BEAT,          // 50.22 on the billboard, she waves
+  handUp: bar(19) + BEAT * 2,     // 50.87 his hand rises by itself
+  notice: bar(20),                // 52.17 he looks at his own hand
+  handDown: bar(20) + BEAT,       // 52.83 lowers it
+  faces: bar(20.5),               // 53.48 the screen's view: a sea of lit faces
+  title: bar(22),                 // 57.39 title
+  glint: bar(22.5),               // 58.70 star glint
 };
