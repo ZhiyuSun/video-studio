@@ -13,7 +13,7 @@ films/                    单部短片
     cover/                B 站封面
     render.py             逐镜头渲染
     renders/              渲染输出（已被 .gitignore 忽略）
-  shadow-strike/          《影子罢工》（筹备中，见 BRIEF.md）
+  shadow-strike/          《影子罢工》/《半拍》（BRIEF、TREATMENT、SCRIPT、storyboard/、src/ 皮影引擎）
   only-one-moon/          《宇宙只有一个月亮》生日歌 MV（公开脱敏版）
     src/                  画面代码（Canvas 2D 剪纸风格，逐帧绘制）
     cover/                B 站封面、网易云专辑封面
@@ -32,7 +32,7 @@ docs/
 | 项目 | 状态 | 线上页面 |
 |---|---|---|
 | 《下一帧》 | 已完成全片（4:53），源代码、配乐、封面已入库，准备发布 B 站 | https://claude.ai/artifact/L9PPq1ZDRD6g6hfLCJ3qJZ |
-| 《影子罢工》 | 方案已定（皮影戏风格，约 4 分钟），见 `films/shadow-strike/BRIEF.md`，待在 Claude Code 里制作 | — |
+| 《影子罢工》（提议改名《半拍》） | TREATMENT、剧本、9 格分镜已出（`films/shadow-strike/`），等作者确认后全片渲染 | — |
 | 《宇宙只有一个月亮》MV | 已完成全片（5:58），公开脱敏版源代码、歌曲、封面已入库；已准备 B 站与网易云发布 | — |
 | 古人与心理学 | 已迁到独立仓库 https://github.com/ZhiyuSun/ancient-minds（含第 1–3 期及提交历史） | — |
 | 《诗的形状》第一季 | 选题已定 8 集，未开拍 | https://claude.ai/artifact/1iPn6cgCNG2CTuJ1n7Jicx |
