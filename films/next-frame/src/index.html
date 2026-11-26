@@ -1,0 +1,46 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../node_modules/@fontsource/zcool-kuaile/index.css">
+<style>
+  html,body{margin:0;width:1920px;height:1080px;background:#000;overflow:hidden}
+  #c{position:absolute;left:0;top:138px;width:1920px;height:804px;display:block}
+  #ui{position:absolute;left:0;top:138px;width:1920px;height:804px;pointer-events:none}
+  .card{position:absolute;left:0;right:0;text-align:center;color:#f3efe6;will-change:opacity,filter}
+  .card .zh{font-family:'Noto Serif CJK SC',serif;font-weight:300;font-size:40px;letter-spacing:.32em;text-shadow:0 0 6px rgba(0,0,0,.9),0 0 22px rgba(0,0,0,.85),0 0 60px rgba(0,0,0,.7)}
+  .card .en{font-family:'Crimson Text',serif;font-style:italic;font-size:27px;letter-spacing:.08em;margin-top:14px;opacity:.78;text-shadow:0 0 6px rgba(0,0,0,.95),0 0 20px rgba(0,0,0,.85)}
+  .card.s-card{bottom:92px}
+  .card.s-center{top:50%;transform:translateY(-50%)}
+  .card.s-credit{bottom:96px}
+  .card.s-credit .zh{font-size:28px;letter-spacing:.6em;font-weight:400}
+  .card.s-credit .en{font-family:'Inter Display','Inter',sans-serif;font-style:normal;font-weight:300;font-size:17px;letter-spacing:.62em;margin-top:22px;opacity:.6}
+  .card.s-date{bottom:110px;}
+  .card.s-date .zh{font-size:34px;letter-spacing:.5em}
+  .card.s-date .en{font-family:'Inter Display','Inter',sans-serif;font-style:normal;font-weight:300;font-size:16px;letter-spacing:.7em;opacity:.55;margin-top:18px}
+  .card.s-title{top:50%;transform:translateY(-54%)}
+  .card.s-title .zh{font-size:120px;font-weight:200;letter-spacing:.9em;text-indent:.9em;color:#fff6e4;text-shadow:0 0 60px rgba(255,200,120,.35)}
+  .card.s-title .en{font-family:'Inter Display','Inter',sans-serif;font-style:normal;font-weight:200;font-size:22px;letter-spacing:1.1em;text-indent:1.1em;margin-top:34px;opacity:.7}
+  .card.s-date,.card.s-credit{left:22%;right:22%;padding:10px 0 14px;background:radial-gradient(ellipse 50% 60% at 50% 55%,rgba(0,0,0,.45),rgba(0,0,0,0) 100%)}
+  .card.s-kid,.card.s-ai{text-align:center;left:18%;right:18%;padding:6px 0 10px;background:radial-gradient(ellipse 50% 60% at 50% 55%,rgba(0,0,0,.42),rgba(0,0,0,0) 100%)}
+  .card.s-kid.slot1,.card.s-ai.slot1{bottom:170px} .card.s-kid.slot0,.card.s-ai.slot0{bottom:72px}
+  .card.s-kid .zh{font-family:'ZCOOL KuaiLe','Noto Serif CJK SC',sans-serif;font-weight:400;font-size:40px;letter-spacing:.12em;color:#f5c98e}
+  .card.s-kid .en{font-family:'Crimson Text',serif;font-style:italic;font-size:24px;margin-top:6px;color:#f5c98e;opacity:.7}
+  .card.s-ai .zh{font-size:36px;letter-spacing:.22em}
+  .card.s-ai .en{font-size:24px;margin-top:8px}
+  #term .kidl{font-family:'ZCOOL KuaiLe','Noto Serif CJK SC',sans-serif;font-size:32px;letter-spacing:.08em;color:#f5c98e}
+  #term .ail{font-family:'Noto Serif CJK SC',serif;font-weight:300;font-size:28px;letter-spacing:.12em;color:#efe9dc}
+  #term .sub{font-family:'Crimson Text',serif;font-style:italic;font-size:21px;color:#8d877c;letter-spacing:.03em}
+  #term .who{position:absolute;font-family:'DejaVu Sans Mono',monospace;font-size:15px;color:#6f6a61;letter-spacing:.1em}
+  #term{position:absolute;left:0;right:0;top:0;bottom:0;font-family:'DejaVu Sans Mono',monospace;color:#d9d4c7;font-size:22px;letter-spacing:.04em}
+  #term .line{position:absolute;left:50%;white-space:pre}
+  #term .dim{color:#7c776d}
+  #term .accent{color:#e8a76a}
+  #term .cur{display:inline-block;width:.62em;height:1.05em;background:#e8e2d4;vertical-align:-0.16em;margin-left:2px}
+  #term .zhl{font-family:'Noto Serif CJK SC',serif;font-weight:300;font-size:30px;letter-spacing:.18em;color:#efe9dc}
+  #term .enl{font-family:'Crimson Text',serif;font-style:italic;font-size:26px;letter-spacing:.05em;color:#bdb6a8}
+</style></head>
+<body>
+<canvas id="c" width="1920" height="804"></canvas>
+<div id="ui"><div id="term"></div><div id="cards"></div></div>
+<script type="importmap">{"imports":{"three":"../node_modules/three/build/three.module.js"}}</script>
+<script type="module" src="./engine.js"></script>
+</body></html>

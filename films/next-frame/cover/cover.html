@@ -1,0 +1,41 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../node_modules/@fontsource/zcool-kuaile/index.css">
+<style>
+html,body{margin:0;width:1920px;height:1080px;overflow:hidden;background:#04050a}
+.v{position:absolute;inset:0;display:none}.on{display:block}
+.bg{position:absolute;inset:0;background:url(gal2.png) center/cover no-repeat}
+.sans{font-family:'Noto Sans CJK SC',sans-serif}
+/* A: the hook */
+#A .bg{left:760px;background-position:40% 50%;filter:brightness(.95) saturate(1.05)}
+#A .shade{position:absolute;inset:0;background:linear-gradient(90deg,#04050a 0%,#04050a 34%,rgba(4,5,10,.8) 55%,rgba(4,5,10,.05) 82%)}
+#A .time{position:absolute;left:250px;top:150px;font-family:'DejaVu Sans Mono',monospace;font-size:30px;color:#7d7a86;letter-spacing:.12em}
+#A .bub{position:absolute;left:250px;top:205px;padding:26px 44px;border-radius:40px 40px 40px 10px;background:#f2e6d2;color:#1d1a17;font-family:'ZCOOL KuaiLe';font-size:82px;box-shadow:0 0 60px rgba(242,200,140,.35)}
+#A .pl{position:absolute;left:254px;top:395px;font-family:'Noto Sans CJK SC',sans-serif;font-weight:500;font-size:44px;color:#cdb58c;letter-spacing:.06em}
+#A .p{position:absolute;left:236px;top:450px;font-family:'Inter Display','Inter',sans-serif;font-weight:800;font-size:270px;line-height:1;color:#f3bf6e;letter-spacing:-.02em;text-shadow:0 0 70px rgba(243,170,80,.45)}
+#A .p small{font-size:60px;font-weight:600;color:#cdb58c;letter-spacing:.02em;margin-left:22px;vertical-align:28px}
+#A .l{position:absolute;left:250px;top:735px;font-size:70px !important;font-family:'Noto Serif CJK SC';font-weight:700;font-size:76px;line-height:1.22;color:#fff6e6;text-shadow:0 0 24px #000}
+#A .tag{position:absolute;left:250px;bottom:70px;font-weight:700;font-size:38px;color:#fff;background:#d9822b;padding:10px 26px;border-radius:10px;letter-spacing:.04em}
+/* B: cinematic */
+#B .shade{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(0,0,0,0) 30%,rgba(0,0,0,.55) 100%),linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,0) 30%,rgba(0,0,0,0) 65%,rgba(0,0,0,.7))}
+#B .q{position:absolute;left:0;right:0;top:770px;text-align:center;font-family:'Noto Serif CJK SC';font-weight:600;font-size:72px;color:#f5c98e;text-shadow:0 0 24px #000}
+#B .t{position:absolute;left:0;right:0;top:95px;text-align:center;font-family:'Noto Serif CJK SC';font-weight:500;font-size:220px;letter-spacing:.45em;text-indent:.45em;color:#fff6e4;text-shadow:0 0 50px rgba(0,0,0,.9),0 0 90px rgba(255,190,110,.35)}
+#B .en{position:absolute;left:0;right:0;top:450px;text-align:center;font-family:'Inter Display','Inter',sans-serif;font-weight:400;font-size:34px;letter-spacing:1em;text-indent:1em;color:#efe3cf;text-shadow:0 0 12px #000}
+#B .tag{position:absolute;left:0;right:0;bottom:80px;text-align:center;font-weight:500;font-size:42px;color:#fff;letter-spacing:.08em;text-shadow:0 0 14px #000}
+</style></head><body>
+<div class="v" id="A">
+  <div class="bg"></div><div class="shade"></div>
+  <div class="time">03:12 AM</div>
+  <div class="bub">你呢？今天过得好吗？</div>
+  <div class="pl">AI 给这句话的概率</div><div class="p">0.3%</div>
+  <div class="l">它算得出宇宙的下一帧<br>却没猜到这一句</div>
+  <div class="tag sans">Claude Opus 5.5 原创短片 · 全片由代码生成</div>
+</div>
+<div class="v" id="B">
+  <div class="bg"></div><div class="shade"></div>
+  <div class="q">AI 能预测一切，除了你</div>
+  <div class="t">下一帧</div>
+  <div class="en">THE NEXT FRAME</div>
+  <div class="tag sans">一部由 AI 编剧、导演、渲染、配乐的短片</div>
+</div>
+<script>document.getElementById(location.search.slice(1)||'A').classList.add('on')</script>
+</body></html>

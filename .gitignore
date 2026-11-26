@@ -11,3 +11,8 @@ node_modules/
 __pycache__/
 .venv/
 .DS_Store
+
+# 渲染中间产物
+shots/
+stills/
+chk/
