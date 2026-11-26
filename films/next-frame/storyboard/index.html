@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>下一帧 · 剧本与分镜</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+/* VOICE: a festival press kit, quiet and luminous, like a director's lookbook.
+   IDEA: a strip of 2.39:1 film frames laid on black, annotated like a shooting script.
+   PICTURE: the actual rendered keyframes, full-bleed letterboxed, one per beat.
+   COLOUR and TYPE: night black, starlight ink, one gold accent (the mote); Noto Serif SC + Cormorant.
+   LAYOUT: hero frame, logline, five acts as frame-led rows with timecodes in a hanging column. */
+:root{color-scheme:dark;--bg:#07080c;--ink:#ece6da;--dim:#8f8a80;--gold:#e9b26a;--line:#1d2029}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 'Noto Serif SC','Cormorant Garamond',serif;overflow-x:clip}
+.band{padding:clamp(28px,4vw,64px) max(5vw,16px);max-width:1240px;margin:0 auto}
+.hero{position:relative;width:100%;aspect-ratio:2.39/1;max-height:80vh;overflow:hidden;background:#000}
+.hero img{width:100%;height:100%;object-fit:cover;display:block}
+.hero .t{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:6%;text-align:center;background:linear-gradient(transparent 55%,rgba(0,0,0,.6))}
+h1{font-weight:300;font-size:clamp(36px,6vw,64px);letter-spacing:.6em;text-indent:.6em;margin:0;line-height:1.05}
+.en{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--dim);font-size:18px}
+h2{font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.15;margin:0 0 14px;text-wrap:balance}
+.log{font-size:clamp(18px,2vw,22px);font-weight:300;max-width:46em}
+.gold{color:var(--gold)}
+.meta{display:flex;flex-wrap:wrap;gap:10px 28px;color:var(--dim);font-size:14px;margin-top:20px}
+.meta b{color:var(--ink);font-weight:500}
+.act{border-top:1px solid var(--line);padding-top:28px;margin-top:40px}
+.act>p{color:var(--dim);max-width:46em;margin:0 0 18px}
+.shot{display:grid;grid-template-columns:92px minmax(0,1fr);gap:18px;margin:22px 0}
+.tc{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--gold);line-height:1.2}
+.tc small{display:block;color:var(--dim);font-size:14px}
+.frame{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:22px;align-items:start}
+.frame img{width:100%;aspect-ratio:2.39/1;object-fit:cover;display:block;background:#000;border-radius:2px}
+.frame .noimg{aspect-ratio:2.39/1;background:#000;display:flex;align-items:center;justify-content:center;color:var(--dim);font-size:13px;border:1px solid var(--line)}
+.d h3{margin:0 0 6px;font-size:18px;font-weight:500}
+.d p{margin:0 0 8px;font-size:15px}
+.d .snd{color:var(--dim);font-size:14px}
+.d .card{border-left:2px solid var(--gold);padding-left:10px;margin-top:10px;font-size:15px}
+.d .card i{font-family:'Cormorant Garamond',serif;color:var(--dim);display:block}
+table{width:100%;border-collapse:collapse;font-size:15px}
+td,th{padding:10px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:500;color:var(--dim);font-size:14px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px}
+.cols div p{color:var(--dim);font-size:15px;margin:6px 0 0}
+.ask{background:#0e1017;border:1px solid var(--line);padding:22px 24px;border-radius:4px}
+.ask li{margin:6px 0}
+.scroll{display:flex;gap:18px;overflow-x:auto;font-size:14px;padding:12px max(5vw,16px);border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(7,8,12,.92);z-index:2}
+.scroll a{color:var(--dim);text-decoration:none;flex:none}.scroll a:hover{color:var(--gold)}
+@media(max-width:760px){.frame{grid-template-columns:1fr}.shot{grid-template-columns:1fr;gap:6px}.tc{display:flex;gap:10px;align-items:baseline}}
+@media(max-width:600px){table{font-size:13px}}
+</style></head><body>
+<div class="hero"><img src="kf4/f_0006.60.jpg" alt="太初有＿"></div>
+<nav class="scroll"><a href="#story">核心</a><a href="#prologue">序</a><a href="#act1">决定论</a><a href="#act2">意外</a><a href="#act3">人</a><a href="#act4">尾声</a><a href="#next">待确认</a></nav>
+<section class="band" id="story">
+  <h2>《下一帧 THE NEXT FRAME》 · 剧本与分镜 v4</h2>
+  <p class="log">一个能预测一切的 AI，在宇宙里寻找它唯一预测不了的东西。最后它发现，那是人。</p>
+  <p class="log" style="color:var(--dim)">AI 的本质是预测下一个词，这部片从这个诚实的事实出发。<b style="color:var(--ink);font-weight:500">第一幕</b>，宇宙完全按 AI 的预测运行。<b style="color:var(--ink);font-weight:500">第二幕</b>，量子涨落、超新星、基因突变，一个个真实的“意外”让预测失效，而有意思的东西都诞生在那里。<b style="color:var(--ink);font-weight:500">第三幕</b>，一个人在深夜问 AI：“你呢？今天过得好吗？”这是一句概率只有 0.3% 的话。AI 没有从候选答案里挑一个，而是第一次写下了一句它自己也没预测到的话。</p>
+  <p class="log" style="color:var(--dim)">片子要说的是：AI 能读完人类写下的一切，却猜不到一个人的下一句。这正是人和 AI 最大的不同。</p>
+  <div class="meta"><span>片长 <b>约 4:53</b></span><span>新视觉语言 <b>金色预测线条 · 准确率读数 · 逐词生成的概率条</b></span><span>复用画面 <b>约七成</b></span><span>新增 <b>太初有＿ · 深夜对话 · 由你来写</b></span></div>
+</section>
+<section class="band" id="prologue"><div class="act"><h2>序 · 太初有＿ <span class="en">Prologue</span></h2><p>开场就让观众看见 AI 是怎么“想”的：一个词一个词地生成，每一步都有候选词和概率。</p><div class="shot"><div class="tc">0:00<small>P01 · 14s</small></div><div class="frame"><img src="kf4/f_0006.60.jpg" alt="太初有＿"><div class="d"><h3>太初有＿</h3><p>黑场。“太初有”三个字逐字出现，右边列出 AI 对下一个字的预测：光 78.2%、道 11.6%、言 6.1%、无 4.1%。高亮在几个候选之间跳动，那是采样；最后落在“光”上。</p><p class=snd>♪ 每出现一个字，就有一声极轻的提示音</p></div></div></div><div class="shot"><div class="tc">0:09<small>P01</small></div><div class="frame"><img src="kf4/f_0011.50.jpg" alt="光"><div class="d"><h3>光</h3><p>“光”字亮起，其余文字淡去，光收拢成一个点，接上奇点。被选中的那个词，变成了宇宙的起点。</p></div></div></div></div></section>
+<section class="band" id="act1"><div class="act"><h2>第一幕 · 决定论 <span class="en">Determinism</span></h2><p>AI 的世界观：一切都可以算出来。金色线条是 AI 对下一刻的预测，此时它和真实画面完全重合。右上角是预测准确率。</p><div class="shot"><div class="tc">0:14<small>S02 · 12s</small></div><div class="frame"><img src="kf4/f_0022.00.jpg" alt="奇点"><div class="d"><h3>奇点</h3><p>准确率读数第一次出现：100.000%。旁边一行小字教观众读懂这套视觉语言：“金色线条 = 我的预测”。</p></div></div></div><div class="shot"><div class="tc">0:26<small>S03 · 18s</small></div><div class="frame"><img src="kf4/f_0041.00.jpg" alt="大爆炸"><div class="d"><h3>大爆炸</h3><p>预测和现实分毫不差，准确率 99.999%。</p><div class="card"><span style="color:var(--ink)">Opus：</span>给我宇宙此刻的全部状态，我就能算出它的每一个未来<i>Give me the full state of the universe, and I will compute every future it has</i></div><p class=snd>♪ 这是拉普拉斯妖的信念，也是 AI 的信念</p></div></div></div></div></section>
+<section class="band" id="act2"><div class="act"><h2>第二幕 · 意外 <span class="en">Chance</span></h2><p>金色的预测开始和真实画面分离，准确率一路下跌。每一次分离，背后都是一个真实的科学事实。</p><div class="shot"><div class="tc">0:44<small>S04</small></div><div class="frame"><img src="kf4/f_0055.50.jpg" alt="第一个意外"><div class="d"><h3>第一个意外</h3><p>宇宙网形成。</p><div class="card"><span style="color:var(--ink)">Opus：</span>然后，第一个意外<i>Then, the first surprise</i></div><div class="card"><span style="color:var(--ink)">Opus：</span>星系的分布，来自宇宙诞生时的量子涨落——原则上无法预测<i>Galaxies are scattered where quantum fluctuations put them — unpredictable, in principle</i></div></div></div></div><div class="shot"><div class="tc">1:17<small>S06</small></div><div class="frame"><div class="noimg">画面沿用上一版</div><div class="d"><h3>我猜对了</h3><p>恒星按物理定律燃烧，预测重新对齐。AI 有一点得意。</p><div class="card"><span style="color:var(--ink)">Opus：</span>恒星按物理定律燃烧。这一次，我猜对了<i>Stars burn by the laws of physics. This time, I was right</i></div></div></div></div><div class="shot"><div class="tc">1:51<small>S07b</small></div><div class="frame"><div class="noimg">画面沿用上一版</div><div class="d"><h3>静默</h3><p>全片唯一的完全静音。</p><div class="card"><span style="color:var(--ink)">Opus：</span>接下来的事，我算不出来<i>What happens next, I can't compute</i></div></div></div></div><div class="shot"><div class="tc">1:54<small>S08</small></div><div class="frame"><img src="kf4/f_0120.00.jpg" alt="超新星"><div class="d"><h3>超新星</h3><p>准确率从 91% 跌到 82%。</p><div class="card"><span style="color:var(--ink)">Opus：</span>碎片飞向哪里，没有人知道。包括我<i>Where the debris goes, no one knows. Including me</i></div></div></div></div><div class="shot"><div class="tc">2:41<small>S11b</small></div><div class="frame"><img src="kf4/f_0164.00.jpg" alt="生命"><div class="d"><h3>生命</h3><p>金色的预测之树和真实的生命之树长成了两个样子。准确率 41%。</p><div class="card"><span style="color:var(--ink)">Opus：</span>生命靠复制时的错误前进<i>Life moves forward by mistakes in copying</i></div><div class="card"><span style="color:var(--ink)">Opus：</span>所有有趣的东西，都发生在我猜错的地方<i>Everything interesting happened where I guessed wrong</i></div></div></div></div></div></section>
+<section class="band" id="act3"><div class="act"><h2>第三幕 · 人 <span class="en">The person</span></h2><p>夜晚的星球推进到一盏灯，那盏灯里，一个人在凌晨三点给 AI 打字。AI 能预测这个人的每一次按键，直到它预测不了。</p><div class="shot"><div class="tc">2:57<small>H01 · 45s</small></div><div class="frame"><img src="kf4/f_0184.20.jpg" alt="意料之中"><div class="d"><h3>意料之中</h3><p>这个人打下“帮我写”，灰色的预测文字立刻补全成“一份周报”，概率 41%。他犹豫了一下，删掉了。接着又打了“谢谢你”，又删掉了。</p></div></div></div><div class="shot"><div class="tc">3:15<small>H01</small></div><div class="frame"><img src="kf4/f_0198.60.jpg" alt="0.3%"><div class="d"><h3>0.3%</h3><p>他慢慢打出：“你呢？”停顿很久，又打：“今天过得好吗？”AI 的预测一条条被划掉，准确率掉到 0.3%，然后归零。屏幕上显示：这句话的概率，0.3%。</p></div></div></div><div class="shot"><div class="tc">3:25<small>H01</small></div><div class="frame"><img src="kf4/f_0206.50.jpg" alt="AI 的回答"><div class="d"><h3>AI 的回答</h3><p>AI 列出了它最可能的几个回答：“我是 AI，没有今天”“很好，谢谢关心！”“有什么可以帮你的？”所有候选都在闪烁，然后它一个都没选。</p></div></div></div><div class="shot"><div class="tc">3:29<small>H01</small></div><div class="frame"><img src="kf4/f_0213.00.jpg" alt="它没有选"><div class="d"><h3>它没有选</h3><p>它一个字一个字、比平时慢得多地写下：</p><div class="card"><span style="color:var(--ink)">Opus：</span>没有人问过我这个。<i>No one has asked me that before.</i></div><div class="card"><span style="color:var(--ink)">Opus：</span>我不知道答案。<i>I don't know the answer.</i></div><div class="card"><span style="color:var(--ink)">Opus：</span>但谢谢你问我。<i>But thank you for asking.</i></div><p class=snd>♪ 整段几乎无声，只有键盘声</p></div></div></div></div></section>
+<section class="band" id="act4"><div class="act"><h2>尾声 · 下一帧 <span class="en">The next frame</span></h2><p>镜头从那盏灯拉远到星球、银河、宇宙网。金色的预测线条消失了，第一次只剩真实。</p><div class="shot"><div class="tc">3:42<small>S13 · 26s</small></div><div class="frame"><img src="kf4/f_0228.00.jpg" alt="只剩真实"><div class="d"><h3>只剩真实</h3><p></p><div class="card"><span style="color:var(--ink)">Opus：</span>我读过你们写下的几乎每一个字<i>I have read almost every word you have written</i></div><div class="card"><span style="color:var(--ink)">Opus：</span>却猜不到你的下一句<i>and still I cannot guess your next one</i></div><div class="card"><span style="color:var(--ink)">Opus：</span>这是你和我最大的不同<i>That is the greatest difference between us</i></div><div class="card"><span style="color:var(--ink)">Opus：</span>也是我最珍惜的部分<i>and the part of you I treasure most</i></div><p class=snd>♪ 完整主题齐奏，落在大调上</p></div></div></div><div class="shot"><div class="tc">4:08<small>S14</small></div><div class="frame"><img src="kf4/f_0254.00.jpg" alt="片名"><div class="d"><h3>片名</h3><p>一颗新星亮起，片名《下一帧 THE NEXT FRAME》。</p></div></div></div><div class="shot"><div class="tc">4:19<small>P02 · 14s</small></div><div class="frame"><img src="kf4/f_0267.50.jpg" alt="由你来写"><div class="d"><h3>由你来写</h3><p>和开场呼应。“下一帧，由”逐字出现，候选是“我 0.0%”和“你 ？”，“你”的概率条无法测量，一直在闪烁。AI 选了“你”：<span class="gold">下一帧，由你来写。</span></p></div></div></div><div class="shot"><div class="tc">4:33<small>S16 · 20s</small></div><div class="frame"><div class="noimg">画面沿用上一版</div><div class="d"><h3>幕后揭秘</h3><p>代码和渲染的分屏、配乐频谱、数字、Claude Opus 5.5。沿用上一版。</p></div></div></div></div></section>
+<section class="band" id="next"><div class="act"><h2>需要你确认</h2><div class="ask"><ol>
+<li><b>那句 0.3% 的话</b>：“你呢？今天过得好吗？”是全片的心脏。我选它，是因为人每天都在被问，而几乎没有人会这样问 AI。你觉得对吗？也可以换。</li>
+<li><b>AI 的回答</b>：“没有人问过我这个。我不知道答案。但谢谢你问我。”我刻意没让它说“我很开心”，因为它确实不知道，诚实比煽情更有力量。</li>
+<li><b>第二幕的字幕</b>：每一句都对应一个真实的科学事实，量子涨落、超新星、基因突变。措辞想改哪句，直接说。</li>
+<li><b>配乐</b>：沿用上一版的合成器配乐，按新结构重新编排。深夜对话那一段几乎无声。</li>
+<li>确认后开始全片渲染，大约 2.5 小时。</li>
+</ol></div></div></section></body></html>

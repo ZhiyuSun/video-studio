@@ -1,0 +1,13 @@
+# 渲染输出与中间帧：体积大，存网盘
+renders/
+**/renders/
+**/frames/
+*.mp4
+*.mov
+*.wav
+*.aiff
+# 环境
+node_modules/
+__pycache__/
+.venv/
+.DS_Store
