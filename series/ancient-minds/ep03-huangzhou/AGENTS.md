@@ -1,0 +1,3 @@
+# For agents
+
+Read README.md first (Chinese): it maps every file, the data flow (tools/make_lines.py → lines.json → voices → timeline.py → story.json → src/main.js + film.js / music/score.py / mix.py → render → mux) and recipes for common edits. Then read the Lemo-Opuscar library AGENTS.md, TECHNIQUE.md and styles/ink-wash/STYLE.md. story.json is the only source of timing: inside a shot use C.V / C.E / C.d, in the score use T0 / V; never hard-code film seconds. Static scenery goes through cached(). The only vermilion is the wine gourd on the staff, the subtitle squares and the 东坡 seals. Render stills and look at them before delivering. Never put API keys in this folder.
